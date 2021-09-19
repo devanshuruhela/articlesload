@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA API Pictures</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://s2.googleusercontent.com/s2/favicons?domain=www.nasa.gov">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader hidden">
+        <img src="./rocket.svg" alt="Rocket Loader">
+    </div>
+    <!-- Navigation -->
+    <div class="container">
+    <div class="navigation-container">
+        <span class="background"></span>
+        <span class="navigation-items" id="resultsNav">
+            <h3 class="clickable">Favourites</h3>
+            <h3>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</h3>
+            <h3 class="clickable">Load more</h3>
+        </span>
+        <!-- Favourite route -->
+        <span class="navigation-items hidden" id="favouritesNav">
+            <h3 class="clickable">Load more Nasa images</h3>
+        </span>
+    </div>
+    <div class="images-container">
+        <div class="card">
+            <a href="" title="View image in Fullscreen" target="_blank">
+                <img src=" https://apod.nasa.gov/apod/image/2109/saturn2004to2015_peach_2504.jpg" alt="Nasa pictures"
+                    class="card-img-top">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">Title of the image</h5>
+                <p class="clickale">Add to Favourites</p>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, fugiat ut est minus assumenda at adipisci saepe a hic rem nobis velit? Ea placeat error fugit praesentium ex quae ad. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis culpa deleniti quae laborum quia alias mollitia earum ipsam veniam eos explicabo provident quisquam, illo ab minima inventore eligendi accusamus id.</p>
+                <small class="text-muted">
+                    <strong>12-12-2021</strong>
+                </small>
+                <span>Copyright Info</span>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- saved message-->
+    <div class="save-confirmed" hidden>
+        <h2>Added</h2>
+    </div>
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
