@@ -31,7 +31,11 @@ function createdom()
 
       //full card
       const cardbody = document.createElement('div');
-      cardbody.classLis.add('icard-body');
+      cardbody.classLis.add('card-body');
+
+      //card title
+      const cardTitle = document.createElement('h5');
+      cardTitle.classList.add('card-title')
       
     })
 }
