@@ -5,10 +5,29 @@ const apiurl = `https://api.nasa.gov/planetary/apod?api_key=${apikey}&count=${10
 const resultsNav = document.getElementById('resultsNav');
 const favouritesNav = document.getElementById('favouritesNav');
 const imagesContainer = document.querySelector('.images-container');
-const savedConfirmed = document.querySelector('saved-confirmed');
+const savedConfirmed = document.querySelector('.save-confirmed');
 const loader = document.querySelector('.loader');
 
 let resultsarray = [];
+
+let favourites = {};
+
+function saveFavourites(artUrl)
+{
+  resultsarray.forEach(items =>
+    {
+      if(items.url.includes(artUrl) && !favourites[artUrl])
+      {
+        favourites[artUrl] = items;
+        savedConfirmed.hidden = false;
+        setTimeout(() => {
+          savedConfirmed.hidden = true;
+        },2000);
+        localStorage.setItem('favArticles' , JSON.stringify(favourites))
+      }
+    })
+
+}
 // to create dom dynamically
 function createdom()
 {
@@ -41,6 +60,7 @@ function createdom()
       const saveText = document.createElement('p');
       saveText.classList.add('clickable');
       saveText.textContent = 'Add to Favourites';
+      saveText.setAttribute('onclick' , `saveFavourites('${result.url}')`)
 
       // Card text
       const cardText = document.createElement('p');
@@ -72,16 +92,19 @@ function createdom()
       imagesContainer.appendChild(card)
     })
 }
-
+function updatedom()
+{
+  createdom();
+}
 
 async function getnasaimages() {
   try {
     const response = await fetch(apiurl);
     resultsarray = await response.json();
     console.log(resultsarray);
-    createdom();
+    updatedom();
   } catch (error) {}
 }
 
 
-getnasaimages();
+// getnasaimages();
