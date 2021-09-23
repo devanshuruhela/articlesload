@@ -31,12 +31,45 @@ function createdom()
 
       //full card
       const cardbody = document.createElement('div');
-      cardbody.classLis.add('card-body');
+      cardbody.classList.add('card-body');
 
       //card title
       const cardTitle = document.createElement('h5');
-      cardTitle.classList.add('card-title')
-      
+      cardTitle.classList.add('card-title');
+      cardTitle.textContent = result.title;
+      //Save text
+      const saveText = document.createElement('p');
+      saveText.classList.add('clickable');
+      saveText.textContent = 'Add to Favourites';
+
+      // Card text
+      const cardText = document.createElement('p');
+      cardText.classList.add('.card-text')
+      cardText.textContent = result.explanation;
+
+      // footer
+
+      const footer = document.createElement('small');
+      footer.classList.add('text-muted');
+      // date
+      const date = document.createElement('strong');
+      date.textContent = result.date;
+
+      // copyright
+      const copyright = document.createElement('span');
+      if(result.copyright === undefined)
+      {
+        copyright.textContent =  '';
+      }
+      copyright.textContent = ` ${result.copyright}`;
+
+      //appending
+      footer.append(date , copyright);
+      cardbody.append(cardTitle , saveText , cardText , footer);
+      link.appendChild(image);
+      card.append(link , cardbody);
+      console.log(card)
+      imagesContainer.appendChild(card)
     })
 }
 
@@ -46,7 +79,9 @@ async function getnasaimages() {
     const response = await fetch(apiurl);
     resultsarray = await response.json();
     console.log(resultsarray);
+    createdom();
   } catch (error) {}
 }
 
-//getnasaimages();
+
+getnasaimages();
