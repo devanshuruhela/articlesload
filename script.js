@@ -29,9 +29,10 @@ function saveFavourites(artUrl)
 
 }
 // to create dom dynamically
-function createdom()
+function createdom(whichpage)
 {
-  resultsarray.forEach(result=>
+  const currentarray = whichpage === 'results'? resultsarray: Object.values(favourites)
+  currentarray.forEach(result=>
     {
       //card
       const card = document.createElement('div');
@@ -92,9 +93,14 @@ function createdom()
       imagesContainer.appendChild(card)
     })
 }
-function updatedom()
+function updatedom(whichpage)
 {
-  createdom();
+  if(localStorage.getItem('favArticles'))
+  {
+    favourites = JSON.parse(localStorage.getItem('favArticles'));
+
+  }
+  createdom(whichpage);
 }
 
 async function getnasaimages() {
@@ -102,9 +108,9 @@ async function getnasaimages() {
     const response = await fetch(apiurl);
     resultsarray = await response.json();
     console.log(resultsarray);
-    updatedom();
+    updatedom('favourites');
   } catch (error) {}
 }
 
 
-// getnasaimages();
+getnasaimages();
