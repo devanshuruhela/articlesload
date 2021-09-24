@@ -17,13 +17,13 @@
     <div class="navigation-container">
         <span class="background"></span>
         <span class="navigation-items" id="resultsNav">
-            <h3 class="clickable">Favourites</h3>
+            <h3 class="clickable" onclick="updatedom('favourites')">Favourites</h3>
             <h3>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</h3>
-            <h3 class="clickable">Load more</h3>
+            <h3 class="clickable" onclick="getnasaimages()">Load more</h3>
         </span>
         <!-- Favourite route -->
         <span class="navigation-items hidden" id="favouritesNav">
-            <h3 class="clickable">Load more Nasa images</h3>
+            <h3 class="clickable" onclick="getnasaimages()">Load more Nasa images</h3>
         </span>
     </div>
     <div class="images-container">
