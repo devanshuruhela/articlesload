@@ -12,6 +12,13 @@ let resultsarray = [];
 
 let favourites = {};
 
+
+function showcontent()
+{
+  loader.classList.add('hidden');
+}
+
+
 function saveFavourites(artUrl)
 {
   resultsarray.forEach(items =>
@@ -127,9 +134,12 @@ function updatedom(whichpage)
   }
   imagesContainer.textContent = '';
   createdom(whichpage);
+  showcontent();
 }
 
 async function getnasaimages() {
+  // show loader
+  loader.classList.remove('hidden')
   try {
     const response = await fetch(apiurl);
     resultsarray = await response.json();
