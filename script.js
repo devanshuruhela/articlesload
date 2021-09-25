@@ -13,8 +13,19 @@ let resultsarray = [];
 let favourites = {};
 
 
-function showcontent()
+function showcontent(whichpage)
 {
+  window.scrollTo({top:0 , behavior:'instant'} );
+  if(whichpage === 'results')
+  {
+    resultsNav.classList.remove('hidden');
+    favouritesNav.classList.add('hidden');
+  }
+  else
+  {
+     resultsNav.classList.add("hidden");
+     favouritesNav.classList.remove("hidden");
+  }
   loader.classList.add('hidden');
 }
 
@@ -134,7 +145,7 @@ function updatedom(whichpage)
   }
   imagesContainer.textContent = '';
   createdom(whichpage);
-  showcontent();
+  showcontent(whichpage);
 }
 
 async function getnasaimages() {
